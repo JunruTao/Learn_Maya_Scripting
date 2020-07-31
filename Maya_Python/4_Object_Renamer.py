@@ -92,6 +92,12 @@ for obj in sel:
     else:
         suffix = 'grp'
 
+    #   now what if the object already renamed?
+    # A: You can do this, to check that string:
+    if obj.endswith(suffix):
+        continue
+        #this continue here will skip the renaming part
+
 
     newName = shortName + "_" + suffix
     print newName
