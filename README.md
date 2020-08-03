@@ -22,3 +22,5 @@ Learn and use Maya’s API(cmds, PyMel, MEL, Python 2.7, and C++ ) to create pro
        4. How’s performance?
        5. How to improve it?
        6. The future?
+
+* **blog link >>> [here](https://junrutao.wordpress.com/junru-tao/blog/f-m-p-thesis/)**
