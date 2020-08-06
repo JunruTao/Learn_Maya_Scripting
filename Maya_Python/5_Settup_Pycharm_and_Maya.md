@@ -16,6 +16,6 @@
       * `C:/Program Files/Autodesk/Maya2019/devkit/other/pymel/extras/completion/py` directory
 4. Click okay, okay, apply ...;
 
-5. Open up maya's script folder: `C:/Users/${UserName}/maya/2019/scripts/`
+5. Open up maya's script folder: `C:/Users/${UserName}/Documents/maya/2019/scripts/`
 
 6. Now basically you can write all your scripts into here
