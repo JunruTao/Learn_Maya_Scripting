@@ -16,7 +16,7 @@ print cmds.ls()
 # This will print out all the objects in the scene, including all the hidden ones
 #ls has input parameters, such as selection (sl) <- boolean type
 #so you can do:
-print cdms.ls(selection=True)
+print cmds.ls(selection=True)
 
 #while doing this, the return is a list, that means you can store that in a variable
 sel = cmds.ls(selection=True)
