@@ -4,6 +4,7 @@ from maya import cmds
 This script is for coloring nurbs controllers,
 as there could be various of shape under the 
 nurbs obj. Manual functions is not effecient.
+-Junru Tao 2021
 '''
 def setRGBColor(shape, color = (1,1,1,1)):
     rgb = ("R","G","B")
