@@ -31,7 +31,8 @@ def createGear(teeth=10, length=0.3):
 def changeTeeth(constructor, extrude, teeth=10, length=0.3):
     spans = teeth * 2
 
-    cmds.polyPipe(constructor,edit=True, subdivisionsAxis=spans)
+    #edit=True is important. taking the existing node and change that.
+    cmds.polyPipe(constructor, edit=True, subdivisionsAxis=spans)
 
     sideFaces = range(spans * 2, spans * 3, 2)
     faceNames = []
@@ -39,10 +40,20 @@ def changeTeeth(constructor, extrude, teeth=10, length=0.3):
     for face in sideFaces:
         facename = "f[%s]"%(face)
         faceNames.append(facename)
-
+        
+    #note: *faceNames -> the `*` means expanding the list into individual arguements
     cmds.setAttr('%s.inputComponents' % (extrude),
                  len(faceNames),
                  *faceNames,
                  type="componentList")
     cmds.polyExtrudeFacet(extrude, edit=True, ltz=length)
 
+
+
+#as running the script in maya:
+#the scripts: .py, .pyc should be under: /username/Document/maya/scripts/
+# inside of maya, by calling:
+import gearCreator
+reload(gearCreator)
+
+gearCreator.createGear()

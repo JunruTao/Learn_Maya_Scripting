@@ -19,3 +19,15 @@
 5. Open up maya's script folder: `C:/Users/${UserName}/Documents/maya/2019/scripts/`
 
 6. Now basically you can write all your scripts into here
+
+
+### Update:(2021/2/14)
+Setting up the auto complete which was not covered in the tutorial:
+https://medium.com/@cerinatahir/pycharm-maya-843bb5e783ef
+
+After adding the path in `Porject Interpreter`, you need to go to the `Project Structure` -> `Add Content Root` ➕ button and select:
+```
+C:\Program Files\Autodesk\Maya2018\devkit\other\pymel\extras\completion\py
+```
+
+Also mark this director as source folder by clicking on `[source]` button on the top
