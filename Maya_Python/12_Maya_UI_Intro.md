@@ -42,7 +42,7 @@ TODO:
 
 
 #### Findings: If Placing Scripts in different folder under maya/script
-**[ solution ]:**
+**[ solution 1 ]:**
 ```
     import sys
     sys.path.append('../qt')
@@ -54,3 +54,19 @@ TODO:
 ```
 **Other Methods:(better one)**
 http://www.john-player.com/maya/creating-a-new-folder-in-your-maya-directory-from-python/
+
+
+**[ solution 2 ]:**
+due to maya 2019 using python 2.7:
+making `qt.py` a **python module** will be a easier solution;
+1. still placing `Qt.py` into the subfolder `qt` inside `{$user-Maya}/scripts/`
+2. create a new file called "`__init__.py`", put a single line: `from qt import Qt`
+3. then there's the simple part, In maya: call:
+```
+import qt.Qt as Qt
+#reload(Qt)
+win = Qt.QtWidgets.QDialog()
+win.show()
+...
+```
+4. however if the scripts are in a dev/pipeline structure, the solution 1 is perfered as all your scripts will placed into modules under various folders parallel to your asset folder.
