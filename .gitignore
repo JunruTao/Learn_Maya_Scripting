@@ -5,6 +5,7 @@
 /Maya_API/.videos/**
 /.vscode/**
 /maya_scripts_shortcut_dir/**
+/Release/**
 
 ### C++ ###
 # Prerequisites
