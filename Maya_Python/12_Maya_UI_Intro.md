@@ -70,3 +70,18 @@ win.show()
 ...
 ```
 4. however if the scripts are in a dev/pipeline structure, the solution 1 is perfered as all your scripts will placed into modules under various folders parallel to your asset folder.
+
+----
+### Qt Python package loading
+```
+# if using Qt.py
+from Qt import QtWidgets, QtCore, QtGui
+# or
+# PySide2 Comes with maya in this case it will definetly work
+from PySide2 import QtWidgets, QtCore, QtGui
+# maya ver <= maya2016
+from PySide import QtCore, QtGui
+# if you have PyQt
+from PyQt5 import QtWidgets, QtCore, QtGui
+
+```
