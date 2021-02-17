@@ -1,0 +1,418 @@
+<!DOCType html>
+<html>
+<head>
+    <title>
+        Controller Library <s>Documentation</s>
+    </title>
+</head>
+<style>
+    .path{
+        font-family:courier;
+        color:black;
+        background-color:lightyellow;
+    }
+    div.ind{text-indent: 50px;}
+    div.ind20{text-indent: 20px;}
+    div.ind40{text-indent: 40px;}
+    div.ind60{text-indent: 60px;}
+    table {
+        border-collapse: collapse;
+        border: 1px solid black;
+    }
+    th,td
+    {
+        border: 1px solid black;
+    }
+    table.a {
+    table-layout: auto;
+    width: 80%;  
+    margin-left: auto;
+    margin-right: auto;
+    }
+    td 
+    {
+    text-align: center;
+    }
+</style>
+
+<body>
+<h1 style="font-size:50px;">"Controller Library" Documentation</h1>
+<p>-------------------------------------------------------------------------------------------------------------------------------------</p>
+<h2>Copyright (c) Junru Tao 2021</h2>
+<p>
+    This is a Maya Python library for managing controllers and procedural 
+    rigging utilities. This script is based on Dhruv's tutorial <br>
+    (<a href="https://www.udemy.com/course/python-for-maya/">link</a>) and
+    made adaptations, organisations and new functionalities into his origninal
+    scripts. Also check out Dhruv's </br>
+    <a href="https://github.com/dgovil/AdvancedPythonForMaya">GitHub</a> page
+    for more information and learning materials.
+</p>
+
+<h1 style="font-size:30px;">1.0 Installation</h1>
+<p>
+    1. Place the entire folder <b class="path"><q> ControllerLib </q></b>
+    into maya's default user's script path <b class="path"><q> /{$User}/maya/scripts/ </q></b>
+</p>
+<p>
+    2.1 Loading the script in maya either through the default shelf tool under
+    <b class="path"><q> /{$package}/maya/{$MayaVersion}/prefs/shelves/{FILE}.mel </q></b>
+    <br> under the same maya user's folder file structure. 
+    <div></div>2.2 or simply use the code here in Maya' script editor
+    <div class="ind"><b class="path">from ControllerLib import controller_manager as CM</b></div>
+    <div class="ind"><b class="path">reload(CM)</b></div>
+    for example. To load just the `Controller Manager` library
+</p>
+
+<h1 style="font-size:30px;">1.1 File Structure</h1>
+<p>
+< master >
+    <div class="ind20">&#9560;&#9636; qt (External script by mottosso)</div><!--Top Folder-->
+        <div class="ind40">&#9507;&#9723; __init__.py</div>
+        <div class="ind40">&#9495;&#9723; Qt.py ( <a href="https://github.com/mottosso/Qt.py">GitHub</a> )</div> <!--End Line-->
+    <div class="ind20"><b>&#9560;&#9636; ControllerLib </b></div><!--Top Folder-->
+        <div class="ind40">&#9560;&#9636; <b>docs </b></div>
+        <div class="ind40">&#9475;&nbsp; &nbsp; &#9495;&#9723; documentation.html</div> <!--End Line-->
+        <div class="ind40">&#9507;&#9723; __init__.py</div>
+        <div class="ind40">&#9507;&#9723; controller_manager.py</div>
+        <div class="ind40">&#9495;&#9723; utility.py</div> <!--End Line-->
+</p>
+
+<p>-------------------------------------------------------------------------------------------------------------------------------------</p>
+<h1 style="font-size:40px;">"Controller Library" Code API</h1>
+<h1>2.1 controller_manager(CM)</h1>
+
+<table class="a">
+    <tr><td style="text-align:left;">
+<h2>&nbsp;&nbsp; &#9899; <sup> [Function]</sup> CM.create_controller_folder(directory='', o=False)</h2>
+    </tr></table>
+<table class="a">
+<tr><td style="text-align:left;">
+<p>
+    &#10070; Create a new Controller Folder unless the directory already exists
+    if directory not specified,{$MAYA_USER_DIR}/{$CONTROLLER_FOLDER} will be set as default. 
+    <br>&#10070; Use o=True flag to open up the controller folder in file explorer
+</p>
+</td></tr>
+</table>
+<table class="a">
+    <tr>
+      <th>&#10070; Parameters</th>
+      <th>&#10070; Type</th>
+      <th>&#10070; Input Description</th>
+    </tr>
+    <tr>
+      <td>directory</td>
+      <td>string</td>
+      <td>A directory to specify, non will create</td>
+    </tr>
+    <tr>
+      <td>o</td>
+      <td>boolean</td>
+      <td>if Open this directory in file explorer</td>
+    </tr>
+    <tr>
+        <th style="text-align: right;"> &#10149; RETURN -></th>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+  </table>
+  <p style="text-align: center;"> + + + + + + + + + + + + </p>
+<!-- Funtion -------------------------------------------------->
+
+
+  <table class="a">
+    <tr><td style="text-align:left;">
+<h2>&nbsp;&nbsp; &#9899; <sup> [Function]</sup> CM.get_controller_folder()</h2>
+    </tr></table>
+<table class="a">
+<tr><td style="text-align:left;">
+<p>
+    &#10070; Get the string value of controller folder's full path
+</p>
+</td></tr>
+</table>
+<table class="a">
+    <tr>
+      <th>&#10070; Parameters</th>
+      <th>&#10070; Type</th>
+      <th>&#10070; Input Description</th>
+    </tr>
+    <tr>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+      <th style="text-align: right;"> &#10149; RETURN -></th>
+      <td>string</td>
+      <td>Controller Folder's Path</td>
+    </tr>
+  </table>
+  <p style="text-align: center;"> + + + + + + + + + + + + </p>
+<!-- Funtion ----------------------------------------------------->
+
+
+
+<table class="a">
+<tr><td style="text-align:left;">
+<h2>&nbsp;&nbsp; &#9899; <sup> [Function]</sup> CM.open_controller_folder()</h2></tr></table><table class="a">
+<tr><td style="text-align:left;">
+<p>
+    &#10070; Open the folder of controllers in file explorer
+</p>
+</td></tr>
+</table>
+<table class="a">
+    <tr>
+      <th>&#10070; Parameters</th>
+      <th>&#10070; Type</th>
+      <th>&#10070; Input Description</th>
+    </tr>
+    <tr>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+      <th style="text-align: right;"> &#10149; RETURN -></th>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+  </table>
+  <p style="text-align: center;"> + + + + + + + + + + + + </p>
+<!-- Funtion ----------------------------------------------------->
+
+
+<table class="a">
+    <tr><td style="text-align:left;">
+    <h2>&nbsp;&nbsp; &#9899; <sup> [Function]</sup> CM.set_controller_folder(directory)</h2></tr></table><table class="a">
+    <tr><td style="text-align:left;">
+    <p>
+        &#10070; Setting the {$default_folder} string to a different location.
+        <br>&#9947; [Note]: this function does not create a new directory.
+    </p>
+    </td></tr>
+    </table>
+    <table class="a">
+        <tr>
+          <th>&#10070; Parameters</th>
+          <th>&#10070; Type</th>
+          <th>&#10070; Input Description</th>
+        </tr>
+        <tr>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+          <th style="text-align: right;"> &#10149; RETURN -></th>
+          <td>-</td>
+          <td>-</td>
+        </tr>
+      </table>
+      <p style="text-align: center;"> + + + + + + + + + + + + </p>
+    <!-- Funtion ----------------------------------------------------->
+    
+
+<table class="a">
+    <tr><td style="text-align:left;">
+    <h2>&nbsp;&nbsp; &#11036; <sup> [Class]</sup> CM.ControllerManager(dict)</h2></tr></table><table class="a">
+    <tr><td style="text-align:left;">
+    <p>
+        &#10070; [Controller Manager]<div></div>
+        - Dictionary Class handling create, save and loading controller geometries
+        and its adjacent information.<div></div>
+            <div class="ind40">-> geo.ma [maya ASCII, controller geometry]</div>
+            <div class="ind40">-> geo.json [meta data, controller info]</div>
+            <div class="ind40">-> geo.jpg [icon-thumbnail]</div>
+    </p>
+    </td></tr>
+    </table>
+    <table class="a">
+        <tr>
+          <th>&#10070;  </th>
+          <th>&#10070; Functions </th>
+        </tr>
+        <tr>
+            <td></td>
+            <td style="text-align:left;">- ControllerManager.<b>save(...)</b></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td style="text-align:left;">- ControllerManager.<b>find(...)</b></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td style="text-align:left;">- ControllerManager.<b>load(...)</b></td>
+          </tr>
+      </table>
+      <p style="text-align: center;"> + + + + + + + + + + + + </p>
+    <!-- Funtion ----------------------------------------------------->
+
+    
+<table class="a">
+    <tr><td style="text-align:left;">
+    <h2>&nbsp;&nbsp; &#9899; <sup> [Class-Function] <sup>CM.<sup>class</sup>ControllerManager.</sup></sup> 
+        <div class="ind40">save(self, name='', directory=CONTROLLER_FOLDER, screenshot=True, **info)</div></h2></tr></table><table class="a">
+    <tr><td style="text-align:left;">
+    <p>
+        &#10070;  Saving out Controller geometry and its relevant info
+    </p>
+    </td></tr>
+    </table>
+    <table class="a">
+        <tr>
+          <th>&#10070; Parameters</th>
+          <th>&#10070; Type</th>
+          <th>&#10070; Default</th>
+          <th>&#10070; Input Description</th>
+        </tr>
+        <tr>
+            <td>name </td>
+            <td>string</td>
+            <td>''</td>
+            <td>File name</td>
+        </tr>
+        <tr>
+            <td>directory </td>
+            <td>string</td>
+            <td>CONTROLLER_FOLDER</td>
+            <td>default path to {$MAYA_USER_DIR}/{$CONTROLLER_FOLDER}</td>
+        </tr>
+        <tr>
+            <td>screenshot </td>
+            <td>Boolean</td>
+            <td>True</td>
+            <td>if saving the screenshot to dist</td>
+        </tr>
+        <tr>
+            <td>**info</td>
+            <td>dictionary</td>
+            <td>{ }</td>
+            <td>extra properties to add to meta data(i.g.(.., author='John',..))</td>
+        </tr>
+        <tr>
+          <th style="text-align: right;"> &#10149; RETURN -></th>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+        </tr>
+      </table>
+      <p style="text-align: center;"> + + + + + + + + + + + + </p>
+    <!-- Funtion ----------------------------------------------------->
+
+    <table class="a">
+        <tr><td style="text-align:left;">
+        <h2>&nbsp;&nbsp; &#9899; <sup> [Class-Function] <sup>CM.<sup>class</sup>ControllerManager.</sup></sup> 
+            <div class="ind40">find(self, directory=CONTROLLER_FOLDER, p=False)</div></h2></tr></table><table class="a">
+        <tr><td style="text-align:left;">
+        <p>
+            &#10070;  Saving out Controller geometry and its relevant info
+        </p>
+        </td></tr>
+        </table>
+        <table class="a">
+            <tr>
+              <th>&#10070; Parameters</th>
+              <th>&#10070; Type</th>
+              <th>&#10070; Default</th>
+              <th>&#10070; Input Description</th>
+            </tr>
+            <tr>
+                <td>directory </td>
+                <td>string</td>
+                <td>CONTROLLER_FOLDER</td>
+                <td>default path to {$MAYA_USER_DIR}/{$CONTROLLER_FOLDER}</td>
+            </tr>
+            <tr>
+                <td>p </td>
+                <td>Boolean</td>
+                <td>False</td>
+                <td>if print the found results</td>
+            </tr>
+            <tr>
+              <th style="text-align: right;"> &#10149; RETURN -></th>
+              <td>Boolean</td>
+              <td>-</td>
+              <td>if found any</td>
+            </tr>
+          </table>
+          <p style="text-align: center;"> + + + + + + + + + + + + </p>
+        <!-- Funtion ----------------------------------------------------->
+ 
+    <table class="a">
+        <tr><td style="text-align:left;">
+        <h2>&nbsp;&nbsp; &#9899; <sup> [Class-Function] <sup>CM.<sup>class</sup>ControllerManager.</sup></sup> 
+            <div class="ind40">find(self, directory=CONTROLLER_FOLDER, p=False)</div></h2></tr></table><table class="a">
+        <tr><td style="text-align:left;">
+        <p>
+            &#10070;  Search under the Controller Directory and load the info to memory
+        </p>
+        </td></tr>
+        </table>
+        <table class="a">
+            <tr>
+              <th>&#10070; Parameters</th>
+              <th>&#10070; Type</th>
+              <th>&#10070; Default</th>
+              <th>&#10070; Input Description</th>
+            </tr>
+            <tr>
+                <td>directory </td>
+                <td>string</td>
+                <td>CONTROLLER_FOLDER</td>
+                <td>default path to {$MAYA_USER_DIR}/{$CONTROLLER_FOLDER}</td>
+            </tr>
+            <tr>
+                <td>p </td>
+                <td>Boolean</td>
+                <td>False</td>
+                <td>if print the found results</td>
+            </tr>
+            <tr>
+              <th style="text-align: right;"> &#10149; RETURN -></th>
+              <td>Boolean</td>
+              <td>-</td>
+              <td>if found any</td>
+            </tr>
+          </table>
+          <p style="text-align: center;"> + + + + + + + + + + + + </p>
+        <!-- Funtion ----------------------------------------------------->
+
+<table class="a">
+<tr><td style="text-align:left;">
+<h2>&nbsp;&nbsp; &#9899; <sup> [Class-Function] <sup>CM.<sup>class</sup>ControllerManager.</sup></sup> 
+<div class="ind40">load(self, name='')</div></h2></tr></table><table class="a">
+<tr><td style="text-align:left;">
+<p>
+&#10070; Load the Controller geometry into current Maya Scene
+</p>
+            </td></tr>
+            </table>
+            <table class="a">
+                <tr>
+                  <th>&#10070; Parameters</th>
+                  <th>&#10070; Type</th>
+                  <th>&#10070; Default</th>
+                  <th>&#10070; Input Description</th>
+                </tr>
+                <tr>
+                    <td>name </td>
+                    <td>string</td>
+                    <td>''</td>
+                    <td>name of controller to load</td>
+                </tr>
+                <tr>
+                  <th style="text-align: right;"> &#10149; RETURN -></th>
+                  <td>Boolean</td>
+                  <td>-</td>
+                  <td>if found any</td>
+                </tr>
+              </table>
+              <p style="text-align: center;"> + + + + + + + + + + + + </p>
+            <!-- Funtion ----------------------------------------------------->
+        
+  <br><br><br><br>
+</body>
+</html>
