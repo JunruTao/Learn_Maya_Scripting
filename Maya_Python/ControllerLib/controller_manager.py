@@ -4,7 +4,6 @@ import os
 import json
 import pprint
 import utility as util
-
 imp.reload(util)
 
 # Global Variables
@@ -94,6 +93,7 @@ class ControllerManager(dict):
             :param p: (Boolean) if Print out the result
             :return: (Boolean) if found
         """
+        self.clear()
         if not os.path.exists(directory):
             print("CM->Find(): Invalid Directory")
             return False

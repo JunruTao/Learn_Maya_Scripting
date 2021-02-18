@@ -59,14 +59,15 @@
     <b class="path"><q> /{$package}/maya/{$MayaVersion}/prefs/shelves/{FILE}.mel </q></b>
     <br> under the same maya user's folder file structure. 
     <div></div>2.2 or simply use the code here in Maya' script editor
-    <div class="ind"><b class="path">from ControllerLib import controller_manager as CM</b></div>
-    <div class="ind"><b class="path">reload(CM)</b></div>
+    <div class="ind"><b class="path">from ControllerLib import libraryUI as LU</b></div>
+    <div class="ind"><b class="path">reload(LU)</b></div>
+    <div class="ind"><b class="path">ui = LU.open_editor()</b></div>
     for example. To load just the `Controller Manager` library
 </p>
 
 <h1 style="font-size:30px;">1.1 File Structure</h1>
 <p>
-< master >
+[ master ]
     <div class="ind20">&#9560;&#9636; qt (External script by mottosso)</div><!--Top Folder-->
         <div class="ind40">&#9507;&#9723; __init__.py</div>
         <div class="ind40">&#9495;&#9723; Qt.py ( <a href="https://github.com/mottosso/Qt.py">GitHub</a> )</div> <!--End Line-->
@@ -75,12 +76,13 @@
         <div class="ind40">&#9475;&nbsp; &nbsp; &#9495;&#9723; documentation.html</div> <!--End Line-->
         <div class="ind40">&#9507;&#9723; __init__.py</div>
         <div class="ind40">&#9507;&#9723; controller_manager.py</div>
+        <div class="ind40">&#9507;&#9723; libraryUI.py</div>
         <div class="ind40">&#9495;&#9723; utility.py</div> <!--End Line-->
 </p>
 
 <p>-------------------------------------------------------------------------------------------------------------------------------------</p>
 <h1 style="font-size:40px;">"Controller Library" Code API</h1>
-<h1>2.1 controller_manager(CM)</h1>
+<h1>controller_manager(CM).py - API Guide if without UI</h1>
 
 <table class="a">
     <tr><td style="text-align:left;">

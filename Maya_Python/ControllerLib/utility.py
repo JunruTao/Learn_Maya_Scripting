@@ -1,7 +1,10 @@
 from maya import cmds
 import os
 import json
-import pprint
+
+from shiboken2 import wrapInstance
+import maya.OpenMayaUI as oMI
+from PySide2 import QtWidgets
 
 
 def join_dir(directory='', name=''):
@@ -119,3 +122,14 @@ def open_folder(directory=''):
         return True
     else:
         return False
+
+
+def get_maya_window():
+    """
+    in order to set the parent that floats above Maya's main interface. This function
+    allows you to return a long pointer(2.7, in Py3 use int(prt) instead).
+    :return: long_ptr to maya QtWidget mainWindow object
+    """
+    main_window_ptr = oMI.MQtUtil.mainWindow()
+    if main_window_ptr:
+        return wrapInstance(long(main_window_ptr), QtWidgets.QWidget)
