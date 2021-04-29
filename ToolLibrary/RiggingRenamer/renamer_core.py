@@ -28,6 +28,8 @@ def rename_selection(prefix="", sides="", suffix_override=""):
         # Nothing in the selection
         cmds.warning("No Objects to rename, please select objects")
         return
+    # start the selection from child then parent
+    selection = sorted(selection, key=len, reverse=True)
     for obj in selection:
         name = str(obj.split("|")[-1])  # getting the last item's short name in the selection
         names = name.split("_")
@@ -108,6 +110,8 @@ def rename_sequence(_name="", padding=2):
             cmds.rename(selection[0], _name)
         return
     else:
+        # start the selection from child then parent
+        selection = sorted(selection, key=len, reverse=True)
         for i in range(len(selection)):
             # making a string index with 2 padding
             number = '{num:0{width}}'.format(num=(i+1), width=padding)
