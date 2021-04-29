@@ -31,4 +31,6 @@ def load_old_prefix():
         return
 
     data = f.read()
+    print data
+
     return data

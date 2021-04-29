@@ -91,31 +91,3 @@ def select_hi():
     cmds.select(hi=True)
 
 
-def rename_sequence(_name="", padding=2):
-    selection = cmds.ls(selection=True)
-    if len(selection) == 0:
-        # Nothing in the selection
-        cmds.warning("No Objects to rename, please select objects")
-        return
-    elif len(selection) == 1:
-        name = str(selection[0].split("|")[-1])  # getting the last item's short name in the selection
-        names = name.split("_")
-
-        # if is already have prefix or have suffix.
-        if len(names) > 1:
-            cmds.rename(selection[0], name.replace(names[1], _name ))
-        else:  # else just rename the whole thing.
-            cmds.rename(selection[0], _name)
-        return
-    else:
-        for i in range(len(selection)):
-            # making a string index with 2 padding
-            number = '{num:0{width}}'.format(num=(i+1), width=padding)
-            name = str(selection[i].split("|")[-1])  # getting the last item's short name in the selection
-            names = name.split("_")
-
-            # if is already have prefix or have suffix.
-            if len(names) > 1:
-                cmds.rename(selection[i], name.replace(names[1], _name + number))
-            else:  # else just rename the whole thing.
-                cmds.rename(selection[i], _name + number)

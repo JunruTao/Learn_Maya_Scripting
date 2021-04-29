@@ -17,7 +17,7 @@ class RenamerUI(QtWidgets.QDialog):
         # [QT Window Properties]
         self.setObjectName('Renamer_UI_Main_Window')
         self.setWindowTitle('Rigging Renamer')
-        self.setFixedSize(300, 240)
+        self.setFixedSize(300, 200)
         # only happens on windows (getting rid of the):
         self.setWindowFlags(self.windowFlags() ^ QtCore.Qt.WindowContextHelpButtonHint)
         self.setAttribute(QtCore.Qt.WA_DeleteOnClose)
@@ -25,17 +25,10 @@ class RenamerUI(QtWidgets.QDialog):
         self.prefix_ = util.load_old_prefix()
         self.build_ui()
         # [QT Building UI]
-        self.show()
 
     def build_ui(self):
 
-        main_tab = QtWidgets.QTabWidget(self)  # parent to this window. ->this_ptr
-        main_tab.setSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        main_tab.setFixedSize(300, 240)
-
-        panel1 = QtWidgets.QWidget()
-        panel1.setSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        master_layout = QtWidgets.QVBoxLayout(panel1)
+        master_layout = QtWidgets.QVBoxLayout(self)  # parent to this window. ->this_ptr
         master_layout.setSpacing(0)
         master_layout.addStretch()
         master_layout.setSizeConstraint(QtWidgets.QLayout.SetMaximumSize)
@@ -98,34 +91,6 @@ class RenamerUI(QtWidgets.QDialog):
         master_layout.addStretch()
         master_layout.addWidget(button_widgets2, 2)
 
-        panel2 = QtWidgets.QWidget()
-        panel2.setSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        panel2_layout = QtWidgets.QVBoxLayout(panel2)
-
-        new_name_widget = QtWidgets.QWidget()  # new name edit line.
-        new_name_layout = QtWidgets.QHBoxLayout(new_name_widget)
-        new_name_label = QtWidgets.QLabel("New Name: ")
-        self.new_name_edit = QtWidgets.QLineEdit()
-        padding_label = QtWidgets.QLabel("Padding:")
-        self.padding_edit = QtWidgets.QLineEdit()
-        self.padding_edit.setText("2")
-        new_name_layout.addWidget(new_name_label, 1)
-        new_name_layout.addWidget(self.new_name_edit, 3)
-        new_name_layout.addWidget(padding_label, 1)
-        new_name_layout.addWidget(self.padding_edit, 1)
-
-        button_sel_hi = QtWidgets.QPushButton("Select Hierarchy")
-        button_rename = QtWidgets.QPushButton("Rename Object/Sequence")
-        button_rename.clicked.connect(self.rename_sq)
-        button_sel_hi.clicked.connect(rn.select_hi)
-
-        panel2_layout.addWidget(new_name_widget)
-        panel2_layout.addWidget(button_sel_hi)
-        panel2_layout.addWidget(button_rename)
-
-        main_tab.addTab(panel1, "Pre/Suf Renaming")
-        main_tab.addTab(panel2, "Sequence Renaming")
-
     def rename_sel(self):
         global default_prefix
         prefix = self.prefix_edits.text()
@@ -144,14 +109,11 @@ class RenamerUI(QtWidgets.QDialog):
         default_prefix = prefix
         rn.rename_selection(prefix, '_R', self.suffix_override.text())
 
-    def closeEvent(self, event):
+    def closeEvent(*args, **kwargs):
         global perforceBrowserWnd
         global default_prefix
         perforceBrowserWnd = None
-        util.write_to_cache_dir(self.prefix_edits.text())
-
-    def rename_sq(self):
-        rn.rename_sequence(self.new_name_edit.text(), int(self.padding_edit.text()))
+        util.write_to_cache_dir(default_prefix)
 
 
 def open_editor():
